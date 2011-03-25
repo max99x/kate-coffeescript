@@ -81,7 +81,8 @@
 
         <RegExpr attribute="Accessor" context="#stay" String="(@[_$a-zA-Z][$\w]+|\bthis)\b" insensitive="false" />
 
-        <RegExpr attribute="Function" context="#stay" String="\((\'[^']*'|&quot;[^&quot;]*&quot;|[^()])*\)\s*(-|=)&gt;" insensitive="true" />
+        <!-- Matches an optional argument list followed by a function arrow (normal or fat). -->
+        <RegExpr attribute="Function" context="#stay" String="(\((\'[^']*'|&quot;[^&quot;]*&quot;|[^()])*\))?\s*(-|=)&gt;" insensitive="true" />
 
         <RegExpr attribute="Identifier" context="#stay" String="[_$a-z][$\w]+\b" insensitive="true" />
 
@@ -109,7 +110,7 @@
 
       <context name="Class" attribute="Normal" lineEndContext="#stay">
         <DetectSpaces/>
-        <RegExpr attribute="Class" context="#pop" String="[_$a-z][$\w]+" insensitive="true" />
+        <RegExpr attribute="Class" context="#pop" String="[@$.\w]+" />
       </context>
 
       <context name="Comment" attribute="Comment" lineEndContext="#pop">
