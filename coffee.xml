@@ -86,8 +86,8 @@
 
         <RegExpr attribute="Identifier" context="#stay" String="[_$a-z][$\w]+\b" insensitive="true" />
 
-        <StringDetect attribute="String" context="String" String="'''"/>
-        <StringDetect attribute="String" context="Rich String" String="&quot;&quot;&quot;"/>
+        <StringDetect attribute="String" context="Heredoc" String="'''"/>
+        <StringDetect attribute="String" context="Rich Heredoc" String="&quot;&quot;&quot;"/>
         <DetectChar attribute="String" context="String" char="'"/>
         <DetectChar attribute="String" context="Rich String" char="&quot;"/>
 
@@ -110,7 +110,7 @@
 
       <context name="Class" attribute="Normal" lineEndContext="#stay">
         <DetectSpaces/>
-        <RegExpr attribute="Class" context="#pop" String="[@$.\w]+" />
+        <RegExpr attribute="Class" context="#pop" String="[@$:.\w]+" />
       </context>
 
       <context name="Comment" attribute="Comment" lineEndContext="#pop">
@@ -130,6 +130,17 @@
         <HlCStringChar attribute="String" context="#stay"/>
         <Detect2Chars attribute="Embedding" context="Embedding" char="#" char1="{"/>
         <DetectChar attribute="String" context="#pop" char="&quot;"/>
+      </context>
+
+      <context name="Heredoc" attribute="String" lineEndContext="#stay">
+        <HlCStringChar attribute="String" context="#stay"/>
+        <StringDetect attribute="String" context="#pop" String="'''"/>
+      </context>
+
+      <context name="Rich Heredoc" attribute="String" lineEndContext="#stay">
+        <HlCStringChar attribute="String" context="#stay"/>
+        <Detect2Chars attribute="Embedding" context="Embedding" char="#" char1="{"/>
+        <StringDetect attribute="String" context="#pop" String="&quot;&quot;&quot;"/>
       </context>
 
       <context name="Embedding" attribute="Embedding" lineEndContext="#stay">
