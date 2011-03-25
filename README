@@ -1,0 +1,1 @@
+This is a simple Kate syntax highlighter for Coffeescript. Drop it into ~/.kde/share/apps/katepart/syntax, restart Kate and open and *.coffee file to activate.
