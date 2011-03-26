@@ -5,7 +5,7 @@
           version="1.0"
           kateversion="2.4"
           section="Scripts"
-          extensions="*.coffee"
+          extensions="Cakefile;*.coffee"
           mimetype="text/x-cofeescript;application/x-cofeescript"
           indenter="python"
           casesensitive="1"
