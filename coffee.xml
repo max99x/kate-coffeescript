@@ -12,7 +12,7 @@
           author="Max Shawabkeh (max99x@gmail.com)"
           license="MIT">
   <highlighting>
-    <!-- Boolean constants. -->
+    <!-- Built-in constants. -->
     <list name="value_keywords">
       <item>false</item>
       <item>true</item>
