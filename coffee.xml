@@ -215,7 +215,7 @@
         <StringDetect attribute="String" context="#pop" String="&quot;&quot;&quot;" endRegion="Rich Heredoc"/>
       </context>
       <!-- Expressions embedded in strings. -->
-      <context name="Embedding" attribute="Embedding" lineEndContext="#stay">
+      <context name="Embedding" attribute="Normal" lineEndContext="#stay">
         <DetectChar attribute="Embedding" context="#pop" char="}"/>
       </context>
       <!-- Embedded Javascript. -->
