@@ -165,7 +165,7 @@
         <DetectChar attribute="String" context="String" char="'"/>
         <DetectChar attribute="String" context="Rich String" char="&quot;"/>
         <!-- Embedded JavaScript. -->
-        <DetectChar attribute="Javascript" context="Javascript" char="`"/>
+        <DetectChar attribute="Javascript" context="Javascript" char="`" beginRegion="Javascript"/>
         <!-- Comments. -->
         <StringDetect attribute="Comment" context="Multiline Comment" String="###" beginRegion="Comment"/>
         <DetectChar attribute="Comment" context="Comment" char="#"/>
@@ -179,7 +179,7 @@
       <context name="Multiline Regex" attribute="Regex" lineEndContext="#stay" noIndentationBasedFolding="1">
         <HlCStringChar attribute="Regex" context="#stay"/>
         <DetectChar attribute="Comment" context="Comment" char="#"/>
-        <StringDetect attribute="Regex" context="#pop" String="///[mig]{0,3}" endRegion="Multiline Regex"/>
+        <RegExpr attribute="Regex" context="#pop" String="///[mig]{0,3}" endRegion="Multiline Regex"/>
       </context>
       <!-- Class names. -->
       <context name="Class" attribute="Normal" lineEndContext="#stay">
@@ -219,12 +219,10 @@
         <DetectChar attribute="Embedding" context="#pop" char="}"/>
       </context>
       <!-- Embedded Javascript. -->
-      <context name="Javascript" attribute="Javascript" lineEndContext="#stay">
-        <DetectChar attribute="Javascript" context="#pop" char="`"/>
-        <!--
-          This breaks indentation-based folding and hides errors where a backtick is embedded in a JS string.
-          <IncludeRules context="##JavaScript" includeAttrib="true"/>
-        -->
+      <context name="Javascript" attribute="Javascript" lineEndContext="#stay" noIndentationBasedFolding="1">
+        <DetectChar attribute="Javascript" context="#pop" char="`" endRegion="Javascript"/>
+        <!-- NOTE: This hides errors where a backtick is embedded in a JS string. -->
+        <IncludeRules context="##JavaScript" includeAttrib="true"/>
       </context>
     </contexts>
     <!-- Style mappings. -->
