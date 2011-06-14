@@ -154,7 +154,7 @@
         <keyword attribute="Browser Globals" context="#stay" String="browser_globals"/>
         <keyword attribute="Node.js Globals" context="#stay" String="nodejs_globals"/>
         <!-- Member accessors. -->
-        <RegExpr attribute="Accessor" context="#stay" String="(@[_$a-zA-Z][$\w]+|\bthis)\b" insensitive="false"/>
+        <RegExpr attribute="Accessor" context="#stay" String="@([$_a-zA-Z][$\w]*\b)?|\bthis\b" insensitive="false"/>
         <!-- Function definitions. Matches an optional argument list followed by a function arrow (normal or fat). -->
         <RegExpr attribute="Function" context="#stay" String="(\((\'[^']*'|&quot;[^&quot;]*&quot;|[^()])*\))?\s*(-|=)&gt;" insensitive="true"/>
         <!-- Generic identifiers. -->
