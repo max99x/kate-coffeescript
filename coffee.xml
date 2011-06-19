@@ -178,6 +178,7 @@
       <!-- Multiline regular expressions. -->
       <context name="Multiline Regex" attribute="Regex" lineEndContext="#stay" noIndentationBasedFolding="1">
         <HlCStringChar attribute="Regex" context="#stay"/>
+        <Detect2Chars attribute="Embedding" context="Embedding" char="#" char1="{"/>
         <DetectChar attribute="Comment" context="Comment" char="#"/>
         <RegExpr attribute="Regex" context="#pop" String="///[mig]{0,3}" endRegion="Multiline Regex"/>
       </context>
