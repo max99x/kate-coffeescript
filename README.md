@@ -6,4 +6,4 @@ For example:
   wget https://raw.github.com/max99x/kate-coffeescript/master/coffee.xml \
     -O ~/.kde/share/apps/katepart/syntax/coffee.xml
 
-![Screenshot](https://raw.github.com/max99x/kate-coffeescript/master/screenshot.png)
+![Screenshot](https://github.com/max99x/kate-coffeescript/raw/master/screenshot.png)
