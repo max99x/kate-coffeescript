@@ -141,10 +141,10 @@
       <context name="Normal" attribute="Normal" lineEndContext="#stay">
         <DetectSpaces/>
         <!-- Numbers. -->
-        <Float attribute="Float" context="#stay"/>
-        <Int attribute="Decimal" context="#stay"/>
-        <HlCOct attribute="Oct" context="#stay"/>
         <HlCHex attribute="Hex" context="#stay"/>
+        <HlCOct attribute="Oct" context="#stay"/>
+        <Int attribute="Decimal" context="#stay"/>
+        <Float attribute="Float" context="#stay"/>
         <!-- Keywords. -->
         <keyword attribute="Keyword" context="#stay" String="keywords"/>
         <keyword attribute="Keyword" context="Class" String="class_keywords"/>
