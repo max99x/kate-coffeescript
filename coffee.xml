@@ -167,7 +167,7 @@
         <!-- Embedded JavaScript. -->
         <DetectChar attribute="Javascript" context="Javascript" char="`" beginRegion="Javascript"/>
         <!-- Comments. -->
-        <StringDetect attribute="Comment" context="Multiline Comment" String="###" beginRegion="Comment"/>
+        <RegExpr attribute="Comment" context="Multiline Comment" String="###(?!#)" beginRegion="Comment"/>
         <DetectChar attribute="Comment" context="Comment" char="#"/>
         <!-- Regular expressions. -->
         <RegExpr attribute="Regex" context="Multiline Regex" String="///" beginRegion="Multiline Regex"/>
