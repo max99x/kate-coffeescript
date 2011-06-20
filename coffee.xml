@@ -173,13 +173,15 @@
         <!-- Regular expressions. -->
         <RegExpr attribute="Regex" context="Multiline Regex" String="///" beginRegion="Multiline Regex"/>
         <RegExpr attribute="Regex" context="#stay" String="/([^/\\\r\n]|\\.)*/[mig]{0,3}"/>
+        <!-- Exit from embedding mode. No-op at top level. -->
+        <DetectChar attribute="Symbol" context="#pop" char="}"/>
         <!-- Operators and other non-alphanumeric symbols. -->
-        <AnyChar attribute="Symbol" context="#stay" String="():!%&amp;+,-/.*&lt;=&gt;?[]|~^&#59;{}"/>
+        <AnyChar attribute="Symbol" context="#stay" String="():!%&amp;+,-/.*&lt;=&gt;?[]|~^&#59;{"/>
       </context>
       <!-- Multiline regular expressions. -->
       <context name="Multiline Regex" attribute="Regex" lineEndContext="#stay" noIndentationBasedFolding="1">
         <HlCStringChar attribute="Regex" context="#stay"/>
-        <Detect2Chars attribute="Embedding" context="Embedding" char="#" char1="{"/>
+        <Detect2Chars attribute="Symbol" context="Normal" char="#" char1="{"/>
         <DetectChar attribute="Comment" context="Comment" char="#"/>
         <RegExpr attribute="Regex" context="#pop" String="///[mig]{0,3}" endRegion="Multiline Regex"/>
       </context>
@@ -203,7 +205,7 @@
       </context>
       <context name="Rich String" attribute="String" lineEndContext="#stay">
         <HlCStringChar attribute="String" context="#stay"/>
-        <Detect2Chars attribute="Embedding" context="Embedding" char="#" char1="{"/>
+        <Detect2Chars attribute="Symbol" context="Normal" char="#" char1="{"/>
         <DetectChar attribute="String" context="#pop" char="&quot;"/>
       </context>
       <!-- Multi-line strings. -->
@@ -213,12 +215,8 @@
       </context>
       <context name="Rich Heredoc" attribute="String" lineEndContext="#stay" noIndentationBasedFolding="1">
         <HlCStringChar attribute="String" context="#stay"/>
-        <Detect2Chars attribute="Embedding" context="Embedding" char="#" char1="{"/>
+        <Detect2Chars attribute="Symbol" context="Normal" char="#" char1="{"/>
         <StringDetect attribute="String" context="#pop" String="&quot;&quot;&quot;" endRegion="Rich Heredoc"/>
-      </context>
-      <!-- Expressions embedded in strings. -->
-      <context name="Embedding" attribute="Normal" lineEndContext="#stay">
-        <DetectChar attribute="Embedding" context="#pop" char="}"/>
       </context>
       <!-- Embedded Javascript. -->
       <context name="Javascript" attribute="Javascript" lineEndContext="#stay" noIndentationBasedFolding="1">
@@ -240,7 +238,6 @@
       <itemData name="String" defStyleNum="dsString" spellChecking="false"/>
       <itemData name="Comment" defStyleNum="dsComment" spellChecking="true"/>
       <itemData name="Symbol" defStyleNum="dsKeyword" spellChecking="false"/>
-      <itemData name="Embedding" defStyleNum="dsChar" spellChecking="false"/>
       <itemData name="Accessor" defStyleNum="dsDataType" spellChecking="false"/>
       <itemData name="Class" defStyleNum="dsDataType" spellChecking="false" bold="1"/>
       <itemData name="Javascript" defStyleNum="dsAlert" spellChecking="false" italic="1"/>
