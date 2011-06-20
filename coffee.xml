@@ -27,6 +27,7 @@
     </list>
     <!-- Generic keywords. -->
     <list name="keywords">
+      <item>do</item>
       <item>return</item>
       <item>break</item>
       <item>continue</item>
